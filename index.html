@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Student Hub – Your complete student platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f6f7fb;--surf:#fff;--ink:#0f172a;--mut:#5b6478;--line:#e4e7ef;--pri:#4f46e5;--pri2:#6366f1;--acc:#0ea5a4;--soft:#eef0ff;--sh:0 1px 2px rgba(15,23,42,.05),0 8px 24px rgba(15,23,42,.06);--shl:0 2px 4px rgba(15,23,42,.06),0 18px 40px rgba(79,70,229,.14)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1020;--surf:#131a2e;--ink:#e8ecf7;--mut:#97a1b8;--line:#232c46;--pri:#818cf8;--pri2:#6366f1;--acc:#2dd4bf;--soft:#1b2342;--sh:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);--shl:0 2px 4px rgba(0,0,0,.3),0 18px 40px rgba(0,0,0,.4)}}
+:root[data-theme="dark"]{--bg:#0b1020;--surf:#131a2e;--ink:#e8ecf7;--mut:#97a1b8;--line:#232c46;--pri:#818cf8;--pri2:#6366f1;--acc:#2dd4bf;--soft:#1b2342;--sh:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);--shl:0 2px 4px rgba(0,0,0,.3),0 18px 40px rgba(0,0,0,.4)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+section{padding:84px 0}
+h1,h2,h3{line-height:1.15;letter-spacing:-.02em}
+h2{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:800}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--pri);margin-bottom:10px}
+.sub{color:var(--mut);max-width:620px;margin-top:12px}
+.head{margin-bottom:44px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:12px;font-weight:600;font-size:.95rem;border:1px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s;font-family:inherit}
+.btn.p{background:linear-gradient(135deg,var(--pri2),var(--pri));color:#fff;box-shadow:0 6px 18px rgba(79,70,229,.3)}
+.btn.p:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(79,70,229,.4)}
+.btn.g{background:var(--surf);border-color:var(--line);color:var(--ink)}
+.btn.g:hover{transform:translateY(-2px);box-shadow:var(--sh)}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:18px;box-shadow:var(--sh);transition:transform .25s,box-shadow .25s}
+/* nav */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem}
+.logo i{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--pri2),var(--acc));display:grid;place-items:center;color:#fff;font-style:normal;font-size:1rem}
+.links{display:flex;gap:28px;font-size:.92rem;font-weight:500;color:var(--mut)}
+.links a:hover{color:var(--ink)}
+.navr{display:flex;gap:10px;align-items:center}
+.ic{width:40px;height:40px;border-radius:11px;border:1px solid var(--line);background:var(--surf);color:var(--ink);cursor:pointer;font-size:1rem}
+.burger{display:none}
+@media(max-width:860px){.links{position:absolute;top:68px;left:0;right:0;flex-direction:column;gap:0;background:var(--surf);border-bottom:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .3s}
+.links.open{max-height:360px}.links a{padding:15px 22px;border-top:1px solid var(--line)}.burger{display:block}.navr .btn{display:none}}
+/* hero */
+.hero{padding:76px 0 60px;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:-200px -100px auto auto;width:640px;height:640px;background:radial-gradient(circle,rgba(99,102,241,.22),transparent 65%);z-index:-1}
+.hgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.pill{display:inline-flex;gap:8px;align-items:center;padding:6px 14px;border:1px solid var(--line);background:var(--surf);border-radius:99px;font-size:.82rem;font-weight:500;color:var(--mut);margin-bottom:22px}
+.pill b{width:8px;height:8px;border-radius:50%;background:var(--acc)}
+.hero h1{font-size:clamp(2.3rem,5.4vw,3.8rem);font-weight:800}
+.hero h1 span{background:linear-gradient(120deg,var(--pri),var(--acc));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.l{color:var(--mut);font-size:1.12rem;margin:20px 0 30px;max-width:540px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.stats{display:flex;gap:34px;margin-top:40px;flex-wrap:wrap}
+.stats b{font-size:1.6rem;font-weight:800;display:block}.stats small{color:var(--mut)}
+.mock{padding:18px;box-shadow:var(--shl);animation:fl 6s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-10px)}}
+.mock .bar{display:flex;gap:6px;margin-bottom:14px}.mock .bar i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.row{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-radius:12px;background:var(--bg);margin-top:10px;font-size:.9rem}
+.row small{color:var(--mut)}
+.tag{font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:99px;background:var(--soft);color:var(--pri)}
+.tag.o{background:rgba(245,158,11,.14);color:#d97706}.tag.gr{background:rgba(16,185,129,.14);color:#059669}
+.prog{height:8px;border-radius:9px;background:var(--line);margin-top:8px;overflow:hidden}.prog i{display:block;height:100%;width:72%;background:linear-gradient(90deg,var(--pri2),var(--acc));border-radius:9px}
+@media(max-width:900px){.hgrid{grid-template-columns:1fr}section{padding:64px 0}}
+/* features */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:900px){.grid3{grid-template-columns:repeat(2,1fr)}}@media(max-width:580px){.grid3{grid-template-columns:1fr}}
+.feat{padding:26px}.feat:hover,.ev:hover{transform:translateY(-5px);box-shadow:var(--shl)}
+.feat .i{width:46px;height:46px;border-radius:13px;background:var(--soft);display:grid;place-items:center;font-size:1.3rem;margin-bottom:16px}
+.feat h3{font-size:1.08rem;margin-bottom:6px}.feat p{color:var(--mut);font-size:.93rem}
+/* materials */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.tab{padding:9px 18px;border-radius:99px;border:1px solid var(--line);background:var(--surf);color:var(--mut);font-weight:600;font-size:.88rem;cursor:pointer;font-family:inherit;transition:.2s}
+.tab.on{background:var(--pri);color:#fff;border-color:var(--pri)}
+.sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.sub-c{padding:20px}.sub-c:hover{transform:translateY(-4px);box-shadow:var(--shl)}
+.sub-c h4{font-size:1rem;margin:10px 0 4px}.sub-c p{font-size:.85rem;color:var(--mut)}
+.sub-c .m{display:flex;gap:8px;margin-top:14px}
+.chip{font-size:.75rem;padding:4px 10px;border-radius:8px;border:1px solid var(--line);color:var(--mut);font-weight:500}
+/* tools */
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:980px){.tools{grid-template-columns:1fr}}
+.tool{padding:26px}.tool h3{font-size:1.1rem;margin-bottom:4px}.tool>p{color:var(--mut);font-size:.88rem;margin-bottom:16px}
+.f{display:grid;grid-template-columns:1fr 70px 70px;gap:8px;margin-bottom:8px}
+.f.a{grid-template-columns:1fr 1fr}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:.9rem}
+input:focus{outline:2px solid var(--pri);outline-offset:0}
+.res{margin-top:14px;padding:14px;border-radius:12px;background:var(--soft);font-weight:600;font-size:.95rem}
+.res b{font-size:1.5rem;color:var(--pri)}
+.timer{font-size:3rem;font-weight:800;text-align:center;letter-spacing:-.03em;margin:8px 0 16px;font-variant-numeric:tabular-nums}
+.tbtn{display:flex;gap:8px;justify-content:center}
+/* events */
+.ev{padding:22px;display:flex;gap:18px;align-items:center}
+.date{min-width:62px;text-align:center;padding:10px 0;border-radius:14px;background:var(--soft);color:var(--pri)}
+.date b{display:block;font-size:1.5rem;line-height:1}.date small{font-size:.72rem;font-weight:700;text-transform:uppercase}
+.ev h4{font-size:1rem}.ev p{font-size:.85rem;color:var(--mut)}
+/* roles */
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:20px}@media(max-width:780px){.roles{grid-template-columns:1fr}}
+.role{padding:32px}
+.role.ad{background:linear-gradient(145deg,#1e1b4b,#312e81);color:#fff;border:none}
+.role.ad p,.role.ad li{color:#c7cbf5}
+.role h3{font-size:1.4rem;margin:8px 0 14px}
+.role ul{list-style:none;padding:0;display:grid;gap:10px;margin-bottom:24px}
+.role li:before{content:"✓";color:var(--acc);font-weight:800;margin-right:10px}
+.role .btn.g{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.25)}
+.cl{margin:0 auto;padding:54px 28px;text-align:center;border-radius:26px;background:linear-gradient(135deg,var(--pri2),#4338ca);color:#fff;box-shadow:var(--shl)}
+.cl h2{margin-bottom:10px}.cl p{opacity:.85;margin-bottom:24px}
+.cl .btn{background:#fff;color:#3730a3}
+footer{border-top:1px solid var(--line);padding:44px 0 30px;margin-top:84px;color:var(--mut);font-size:.9rem}
+.fg{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}.fg div a{display:block;margin-top:8px}
+.fg h5{color:var(--ink);font-size:.9rem}
+.cp{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);font-size:.82rem}
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav>
+<a href="#home" class="logo"><i>S</i>Student Hub</a>
+<div class="links" id="links"><a href="#features">Features</a><a href="#materials">Study Materials</a><a href="#tools">Tools</a><a href="#events">Events</a><a href="#portals">Portals</a></div>
+<div class="navr"><button class="ic" id="theme" aria-label="Toggle theme">◐</button><a href="#portals" class="btn p">Get started</a><button class="ic burger" id="bg" aria-label="Menu">☰</button></div>
+</nav></div></header>
+
+<main>
+<section class="hero" id="home"><div class="wrap hgrid">
+<div>
+<div class="pill"><b></b>Built for BCA, BBA, B.Tech &amp; university students</div>
+<h1>Everything a student needs, <span>all in one place.</span></h1>
+<p class="l">Study materials, notes, assignments, events and smart academic tools — organized by semester, backed by a powerful admin workspace.</p>
+<div class="cta"><a href="#portals" class="btn p">Start learning →</a><a href="#features" class="btn g">Explore features</a></div>
+<div class="stats"><div><b>12k+</b><small>Resources</small></div><div><b>6</b><small>Semesters covered</small></div><div><b>24/7</b><small>Access anywhere</small></div></div>
+</div>
+<div class="card mock"><div class="bar"><i></i><i></i><i></i></div>
+<b>Good morning, Rishith 👋</b><small style="display:block;color:var(--mut)">BCA · Semester 4</small>
+<div class="row"><div>Data Structures – Unit 3<br><small>Notes · PDF</small></div><span class="tag">New</span></div>
+<div class="row"><div>DBMS Assignment 2<br><small>Due in 2 days</small></div><span class="tag o">Pending</span></div>
+<div class="row"><div>Hackathon 2026<br><small>Fri, 10:00 AM · Auditorium</small></div><span class="tag gr">Open</span></div>
+<div class="row" style="display:block"><div style="display:flex;justify-content:space-between"><span>Semester progress</span><b>72%</b></div><div class="prog"><i></i></div></div>
+</div></div></section>
+
+<section id="features"><div class="wrap">
+<div class="head rv"><span class="eyebrow">Features</span><h2>A complete platform for campus life</h2><p class="sub">Designed to reduce the chaos of scattered files, group chats and notice boards.</p></div>
+<div class="grid3">
+<div class="card feat rv"><div class="i">📚</div><h3>Study Materials</h3><p>Syllabus, textbooks, PPTs and reference links sorted by semester and subject.</p></div>
+<div class="card feat rv"><div class="i">📝</div><h3>Notes Library</h3><p>Clean, topic-wise notes and previous-year question papers ready to download.</p></div>
+<div class="card feat rv"><div class="i">✅</div><h3>Assignments</h3><p>Track deadlines, submit work and see feedback without hunting through chats.</p></div>
+<div class="card feat rv"><div class="i">🗂️</div><h3>Admin Records</h3><p>Attendance, marks, notices and student records managed from one dashboard.</p></div>
+<div class="card feat rv"><div class="i">🎓</div><h3>Events &amp; Notices</h3><p>Workshops, hackathons, fests and placement drives with one-tap reminders.</p></div>
+<div class="card feat rv"><div class="i">🧰</div><h3>Student Tools</h3><p>CGPA and attendance calculators plus a focus timer to stay on track.</p></div>
+</div></div></section>
+
+<section id="materials" style="background:var(--surf);border-block:1px solid var(--line)"><div class="wrap">
+<div class="head rv"><span class="eyebrow">Study Materials</span><h2>Organized by semester</h2><p class="sub">Pick a semester to browse subjects. Example: BCA curriculum.</p></div>
+<div class="tabs" id="tabs"></div><div class="sg" id="sg"></div>
+</div></section>
+
+<section id="tools"><div class="wrap">
+<div class="head rv"><span class="eyebrow">Student Tools</span><h2>Smart tools that actually help</h2><p class="sub">Try them right here — no sign-up needed.</p></div>
+<div class="tools">
+<div class="card tool rv"><h3>CGPA Calculator</h3><p>Enter credits and grade points per subject.</p><div id="cg"></div>
+<button class="btn g" id="addS" style="padding:8px 14px;font-size:.85rem">+ Add subject</button>
+<div class="res">CGPA: <b id="cgv">0.00</b></div></div>
+<div class="card tool rv"><h3>Attendance Tracker</h3><p>See if you meet the required percentage.</p>
+<div class="f a"><input id="at" type="number" min="0" placeholder="Attended"><input id="tt" type="number" min="0" placeholder="Total classes"></div>
+<div class="f a"><input id="rq" type="number" value="75" min="1" max="100" placeholder="Required %"><span></span></div>
+<div class="res" id="atr">Enter your classes above.</div></div>
+<div class="card tool rv"><h3>Focus Timer</h3><p>25-minute Pomodoro sessions for deep study.</p>
+<div class="timer" id="tm">25:00</div>
+<div class="tbtn"><button class="btn p" id="ts">Start</button><button class="btn g" id="tr">Reset</button></div></div>
+</div></div></section>
+
+<section id="events" style="padding-top:20px"><div class="wrap">
+<div class="head rv"><span class="eyebrow">Upcoming</span><h2>Events &amp; notices</h2></div>
+<div class="grid3">
+<div class="card ev rv"><div class="date"><b>14</b><small>Oct</small></div><div><h4>Hackathon 2026</h4><p>24-hour coding challenge · Auditorium</p></div></div>
+<div class="card ev rv"><div class="date"><b>21</b><small>Oct</small></div><div><h4>Placement Workshop</h4><p>Resume &amp; interview prep · Seminar Hall</p></div></div>
+<div class="card ev rv"><div class="date"><b>02</b><small>Nov</small></div><div><h4>Internal Exams Begin</h4><p>Timetable available in notices</p></div></div>
+</div></div></section>
+
+<section id="portals"><div class="wrap">
+<div class="head rv"><span class="eyebrow">Two portals</span><h2>Built for students. Powered by admins.</h2><p class="sub">Separate, purpose-built spaces keep learning simple and management effortless.</p></div>
+<div class="roles">
+<div class="card role rv"><span class="tag">Student</span><h3>Student Portal</h3><ul><li>Download notes, PYQs and syllabus</li><li>Track assignments and deadlines</li><li>View attendance, marks and events</li><li>Use CGPA &amp; study tools</li></ul><a href="#" class="btn p">Student login</a></div>
+<div class="card role ad rv"><span class="tag" style="background:rgba(255,255,255,.14);color:#fff">Admin</span><h3>Admin Dashboard</h3><ul><li>Upload and manage study materials</li><li>Maintain student records &amp; attendance</li><li>Publish notices and events</li><li>Review assignments and analytics</li></ul><a href="#" class="btn g">Admin login</a></div>
+</div></div></section>
+
+<section style="padding-top:0"><div class="wrap"><div class="cl rv"><h2>Ready to simplify your college life?</h2><p>Join Student Hub and keep everything academic in one clean place.</p><a href="#portals" class="btn">Create free account</a></div></div></section>
+</main>
+
+<footer><div class="wrap"><div class="fg">
+<div><div class="logo"><i>S</i>Student Hub</div><p style="margin-top:10px;max-width:260px">Your complete student platform.</p></div>
+<div><h5>Platform</h5><a href="#materials">Study Materials</a><a href="#tools">Tools</a><a href="#events">Events</a></div>
+<div><h5>Portals</h5><a href="#portals">Student</a><a href="#portals">Admin</a></div>
+<div><h5>Contact</h5><a href="#">support@studenthub.edu</a></div>
+</div><div class="cp">© 2026 Student Hub. All rights reserved.</div></div></footer>
+
+<script>
+const $=s=>document.querySelector(s);
+// nav / theme
+$('#bg').onclick=()=>$('#links').classList.toggle('open');
+document.querySelectorAll('.links a').forEach(a=>a.onclick=()=>$('#links').classList.remove('open'));
+$('#theme').onclick=()=>{const r=document.documentElement,d=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;r.dataset.theme=d?'light':'dark'};
+// reveal
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+// materials
+const sem={1:[['Programming in C','Fundamentals & problem solving'],['Digital Electronics','Logic gates, circuits'],['Mathematics I','Discrete & algebra'],['Communication Skills','English & soft skills']],
+2:[['Data Structures','Arrays, stacks, trees'],['Web Technologies','HTML, CSS, JavaScript'],['Computer Organization','Architecture basics'],['Mathematics II','Statistics & numerical']],
+3:[['Object Oriented Programming','Java concepts'],['DBMS','SQL & normalization'],['Operating Systems','Processes & memory'],['Software Engineering','SDLC & testing']],
+4:[['Computer Networks','OSI, TCP/IP'],['Python Programming','Core to advanced'],['Design & Analysis of Algorithms','Complexity & paradigms'],['Web Development','PHP & MySQL']],
+5:[['Cloud Computing','AWS & virtualization'],['Artificial Intelligence','Search & ML basics'],['Mobile App Development','Android fundamentals'],['Cyber Security','Threats & defense']],
+6:[['Major Project','Guidelines & templates'],['Data Analytics','Tools & visualization'],['Internship Report','Format & samples'],['Placement Prep','Aptitude & interviews']]};
+const tabs=$('#tabs'),sg=$('#sg');
+function show(n){tabs.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('on',i+1==n));
+sg.innerHTML=sem[n].map(s=>`<div class="card sub-c"><span class="tag">Sem ${n}</span><h4>${s[0]}</h4><p>${s[1]}</p><div class="m"><span class="chip">Notes</span><span class="chip">PYQ</span><span class="chip">PPT</span></div></div>`).join('')}
+for(let i=1;i<=6;i++){const b=document.createElement('button');b.className='tab';b.textContent='Semester '+i;b.onclick=()=>show(i);tabs.appendChild(b)}show(1);
+// CGPA
+const cg=$('#cg');
+function addRow(c='',g=''){const d=document.createElement('div');d.className='f';d.innerHTML=`<input placeholder="Subject" value="${c?'':''}"><input type="number" min="0" placeholder="Credits" value="${c}"><input type="number" min="0" max="10" placeholder="Grade" value="${g}">`;d.oninput=calc;cg.appendChild(d)}
+function calc(){let tc=0,tp=0;cg.querySelectorAll('.f').forEach(r=>{const i=r.querySelectorAll('input'),c=+i[1].value,g=+i[2].value;if(c>0&&i[2].value!==''){tc+=c;tp+=c*g}});$('#cgv').textContent=tc?(tp/tc).toFixed(2):'0.00'}
+addRow(4,9);addRow(3,8);addRow(3,7);calc();$('#addS').onclick=()=>addRow();
+// attendance
+function att(){const a=+$('#at').value,t=+$('#tt').value,r=+$('#rq').value||75,o=$('#atr');if(!t||a>t){o.textContent='Enter valid numbers.';return}
+const p=a/t*100;let m=`Current: <b>${p.toFixed(1)}%</b><br>`;
+if(p>=r){const k=Math.floor(a*100/r-t);m+=`You can safely miss <b>${Math.max(k,0)}</b> more class(es).`}else{const n=Math.ceil((r*t-100*a)/(100-r));m+=`Attend the next <b>${n}</b> class(es) in a row to reach ${r}%.`}o.innerHTML=m}
+['at','tt','rq'].forEach(i=>$('#'+i).oninput=att);
+// timer
+let sec=1500,iv=null;const tm=$('#tm');
+const draw=()=>tm.textContent=String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0');
+$('#ts').onclick=function(){if(iv){clearInterval(iv);iv=null;this.textContent='Resume';return}this.textContent='Pause';iv=setInterval(()=>{if(--sec<=0){clearInterval(iv);iv=null;sec=0;$('#ts').textContent='Start'}draw()},1000)};
+$('#tr').onclick=()=>{clearInterval(iv);iv=null;sec=1500;draw();$('#ts').textContent='Start'};
+</script>
+</body>
+</html>
